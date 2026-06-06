@@ -1,6 +1,8 @@
-# User Story Template
+# Smart Clinic Portal User Stories
 
-## Admin Story 1
+## Admin User Stories
+
+### Story 1
 
 **Title:** Admin Login
 
@@ -8,8 +10,8 @@
 
 **Acceptance Criteria:**
 
-1. Admin can enter username and password.
-2. Valid credentials grant access.
+1. Admin can enter a username and password.
+2. Valid credentials grant access to the admin dashboard.
 3. Invalid credentials display an error message.
 
 **Priority:** High
@@ -17,11 +19,11 @@
 
 **Notes:**
 
-* Authentication should be secure.
+* Authentication must be secure.
 
 ---
 
-## Admin Story 2
+### Story 2
 
 **Title:** Admin Logout
 
@@ -30,19 +32,19 @@
 **Acceptance Criteria:**
 
 1. Admin can click a logout button.
-2. Session is terminated.
-3. User is redirected to the login page.
+2. The session is terminated.
+3. The user is redirected to the login page.
 
 **Priority:** High
 **Story Points:** 2
 
 **Notes:**
 
-* Logout should invalidate all active sessions.
+* Logout should invalidate the active session.
 
 ---
 
-## Admin Story 3
+### Story 3
 
 **Title:** Add Doctor
 
@@ -51,40 +53,40 @@
 **Acceptance Criteria:**
 
 1. Admin can enter doctor details.
-2. Doctor profile is saved successfully.
-3. Doctor appears in the doctor listing.
+2. Doctor information is validated.
+3. Doctor profile is saved successfully.
 
 **Priority:** High
 **Story Points:** 5
 
 **Notes:**
 
-* Required fields must be validated.
+* Required fields must not be empty.
 
 ---
 
-## Admin Story 4
+### Story 4
 
 **Title:** Delete Doctor Profile
 
-*As an admin, I want to delete a doctor's profile, so that outdated records can be removed.*
+*As an admin, I want to delete a doctor's profile from the portal, so that outdated records can be removed.*
 
 **Acceptance Criteria:**
 
 1. Admin can select a doctor profile.
 2. Confirmation is required before deletion.
-3. Profile is removed from the system.
+3. The profile is removed successfully.
 
 **Priority:** Medium
 **Story Points:** 3
 
 **Notes:**
 
-* Deletion should be logged.
+* Deletion actions should be logged.
 
 ---
 
-## Admin Story 5
+### Story 5
 
 **Title:** View Monthly Appointment Statistics
 
@@ -92,20 +94,22 @@
 
 **Acceptance Criteria:**
 
-1. Stored procedure executes successfully.
+1. The stored procedure executes successfully.
 2. Monthly appointment counts are returned.
-3. Results can be reviewed by the admin.
+3. Results are displayed for review.
 
 **Priority:** Medium
 **Story Points:** 5
 
 **Notes:**
 
-* Requires database access.
+* Requires database access permissions.
 
 ---
 
-## Patient Story 1
+## Patient User Stories
+
+### Story 1
 
 **Title:** View Doctors Without Login
 
@@ -113,20 +117,20 @@
 
 **Acceptance Criteria:**
 
-1. Doctor list is publicly accessible.
+1. Doctor listings are publicly accessible.
 2. Doctor details are displayed.
-3. No authentication is required.
+3. No login is required.
 
 **Priority:** High
 **Story Points:** 2
 
 **Notes:**
 
-* Public users can only view information.
+* Public users have read-only access.
 
 ---
 
-## Patient Story 2
+### Story 2
 
 **Title:** Patient Registration
 
@@ -135,19 +139,19 @@
 **Acceptance Criteria:**
 
 1. Registration form accepts email and password.
-2. Account is created successfully.
-3. User receives confirmation.
+2. A new account is created successfully.
+3. Duplicate emails are rejected.
 
 **Priority:** High
 **Story Points:** 5
 
 **Notes:**
 
-* Email must be unique.
+* Email addresses must be unique.
 
 ---
 
-## Patient Story 3
+### Story 3
 
 **Title:** Patient Login
 
@@ -155,9 +159,9 @@
 
 **Acceptance Criteria:**
 
-1. Login form accepts credentials.
-2. Valid credentials grant access.
-3. Invalid credentials display an error.
+1. Patient enters valid credentials.
+2. Successful login redirects to the dashboard.
+3. Invalid login displays an error message.
 
 **Priority:** High
 **Story Points:** 3
@@ -168,7 +172,7 @@
 
 ---
 
-## Patient Story 4
+### Story 4
 
 **Title:** Patient Logout
 
@@ -177,19 +181,19 @@
 **Acceptance Criteria:**
 
 1. Logout button is available.
-2. Session ends successfully.
-3. User is redirected to login.
+2. Session is terminated.
+3. User is redirected to the login page.
 
 **Priority:** High
 **Story Points:** 2
 
 **Notes:**
 
-* Session data should be cleared.
+* Session data must be cleared.
 
 ---
 
-## Patient Story 5
+### Story 5
 
 **Title:** Book Appointment
 
@@ -198,19 +202,19 @@
 **Acceptance Criteria:**
 
 1. Patient can select a doctor.
-2. Patient can choose an available time slot.
-3. Appointment is confirmed after booking.
+2. Patient can choose an available one-hour time slot.
+3. Appointment confirmation is displayed.
 
 **Priority:** High
 **Story Points:** 5
 
 **Notes:**
 
-* Double-booking must be prevented.
+* Double booking must be prevented.
 
 ---
 
-## Patient Story 6
+### Story 6
 
 **Title:** View Upcoming Appointments
 
@@ -220,18 +224,20 @@
 
 1. Upcoming appointments are displayed.
 2. Appointment details are visible.
-3. List is updated automatically.
+3. Past appointments are excluded.
 
 **Priority:** Medium
 **Story Points:** 3
 
 **Notes:**
 
-* Past appointments should be excluded.
+* Appointment list should be updated automatically.
 
 ---
 
-## Doctor Story 1
+## Doctor User Stories
+
+### Story 1
 
 **Title:** Doctor Login
 
@@ -241,7 +247,7 @@
 
 1. Doctor enters valid credentials.
 2. Login succeeds.
-3. Dashboard is displayed.
+3. Doctor dashboard is displayed.
 
 **Priority:** High
 **Story Points:** 3
@@ -252,7 +258,7 @@
 
 ---
 
-## Doctor Story 2
+### Story 2
 
 **Title:** Doctor Logout
 
@@ -260,9 +266,9 @@
 
 **Acceptance Criteria:**
 
-1. Logout button is available.
+1. Logout option is available.
 2. Session is terminated.
-3. User is redirected to login.
+3. Doctor is redirected to the login page.
 
 **Priority:** High
 **Story Points:** 2
@@ -273,7 +279,7 @@
 
 ---
 
-## Doctor Story 3
+### Story 3
 
 **Title:** View Appointment Calendar
 
@@ -282,7 +288,7 @@
 **Acceptance Criteria:**
 
 1. Calendar displays upcoming appointments.
-2. Appointment times are visible.
+2. Appointment details are visible.
 3. Calendar updates automatically.
 
 **Priority:** High
@@ -290,11 +296,11 @@
 
 **Notes:**
 
-* Calendar should support daily and weekly views.
+* Support daily and weekly views.
 
 ---
 
-## Doctor Story 4
+### Story 4
 
 **Title:** Mark Unavailability
 
@@ -304,18 +310,18 @@
 
 1. Doctor can specify unavailable dates and times.
 2. Unavailable slots cannot be booked.
-3. Changes are saved immediately.
+3. Changes are saved successfully.
 
 **Priority:** High
 **Story Points:** 5
 
 **Notes:**
 
-* Existing appointments must remain unaffected.
+* Existing appointments must remain unchanged.
 
 ---
 
-## Doctor Story 5
+### Story 5
 
 **Title:** Update Profile Information
 
@@ -323,20 +329,20 @@
 
 **Acceptance Criteria:**
 
-1. Doctor can edit profile details.
+1. Doctor can edit profile information.
 2. Changes are saved successfully.
-3. Updated information is displayed to patients.
+3. Updated information is visible to patients.
 
 **Priority:** Medium
 **Story Points:** 3
 
 **Notes:**
 
-* Validation is required for contact information.
+* Contact information must be validated.
 
 ---
 
-## Doctor Story 6
+### Story 6
 
 **Title:** View Patient Details
 
@@ -344,9 +350,9 @@
 
 **Acceptance Criteria:**
 
-1. Doctor can access appointment details.
-2. Patient information is displayed.
-3. Access is limited to scheduled appointments.
+1. Doctor can access upcoming appointment information.
+2. Patient details are displayed.
+3. Access is restricted to scheduled appointments.
 
 **Priority:** High
 **Story Points:** 5
