@@ -2,6 +2,7 @@ package com.project.back_end.models;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
+import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.List;
 
@@ -42,6 +43,7 @@ public class Doctor {
     @ElementCollection
     @CollectionTable(name = "doctor_available_times", joinColumns = @JoinColumn(name = "doctor_id"))
     @Column(name = "available_times")
+    @JsonAlias("available_times")
     private List<String> availableTimes;
 
     // Constructors
@@ -115,6 +117,11 @@ public class Doctor {
     }
 
     public List<String> getAvailableTimes() {
+        return availableTimes;
+    }
+
+    @JsonProperty("available_times")
+    public List<String> getAvailableTimesAlias() {
         return availableTimes;
     }
 

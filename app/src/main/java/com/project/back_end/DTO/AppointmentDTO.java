@@ -6,98 +6,95 @@ import java.time.LocalTime;
 
 public class AppointmentDTO {
 
-    private Long id;
-    private Long doctorId;
-    private String doctorName;
-    private Long patientId;
-    private String patientName;
-    private String patientEmail;
-    private String patientPhone;
-    private String patientAddress;
-    private LocalDateTime appointmentTime;
-    private int status;
+	private final Long id;
+	private final Long doctorId;
+	private final String doctorName;
+	private final Long patientId;
+	private final String patientName;
+	private final String patientEmail;
+	private final String patientPhone;
+	private final String patientAddress;
+	private final LocalDateTime appointmentTime;
+	private final int status;
+	private final LocalDate appointmentDate;
+	private final LocalTime appointmentTimeOnly;
+	private final LocalDateTime endTime;
 
-    // Derived fields
-    private LocalDate appointmentDate;
-    private LocalTime appointmentTimeOnly;
-    private LocalDateTime endTime;
+	public AppointmentDTO(
+			Long id,
+			Long doctorId,
+			String doctorName,
+			Long patientId,
+			String patientName,
+			String patientEmail,
+			String patientPhone,
+			String patientAddress,
+			LocalDateTime appointmentTime,
+			int status) {
+		this.id = id;
+		this.doctorId = doctorId;
+		this.doctorName = doctorName;
+		this.patientId = patientId;
+		this.patientName = patientName;
+		this.patientEmail = patientEmail;
+		this.patientPhone = patientPhone;
+		this.patientAddress = patientAddress;
+		this.appointmentTime = appointmentTime;
+		this.status = status;
+		this.appointmentDate = appointmentTime == null ? null : appointmentTime.toLocalDate();
+		this.appointmentTimeOnly = appointmentTime == null ? null : appointmentTime.toLocalTime();
+		this.endTime = appointmentTime == null ? null : appointmentTime.plusHours(1);
+	}
 
-    public AppointmentDTO() {
-    }
+	public Long getId() {
+		return id;
+	}
 
-    public AppointmentDTO(Long id, Long doctorId, String doctorName,
-                          Long patientId, String patientName, String patientEmail,
-                          String patientPhone, String patientAddress,
-                          LocalDateTime appointmentTime, int status) {
-        this.id = id;
-        this.doctorId = doctorId;
-        this.doctorName = doctorName;
-        this.patientId = patientId;
-        this.patientName = patientName;
-        this.patientEmail = patientEmail;
-        this.patientPhone = patientPhone;
-        this.patientAddress = patientAddress;
-        this.appointmentTime = appointmentTime;
-        this.status = status;
+	public Long getDoctorId() {
+		return doctorId;
+	}
 
-        if (appointmentTime != null) {
-            this.appointmentDate = appointmentTime.toLocalDate();
-            this.appointmentTimeOnly = appointmentTime.toLocalTime();
-            this.endTime = appointmentTime.plusHours(1);
-        }
-    }
+	public String getDoctorName() {
+		return doctorName;
+	}
 
-    // Getters
-    public Long getId() {
-        return id;
-    }
+	public Long getPatientId() {
+		return patientId;
+	}
 
-    public Long getDoctorId() {
-        return doctorId;
-    }
+	public String getPatientName() {
+		return patientName;
+	}
 
-    public String getDoctorName() {
-        return doctorName;
-    }
+	public String getPatientEmail() {
+		return patientEmail;
+	}
 
-    public Long getPatientId() {
-        return patientId;
-    }
+	public String getPatientPhone() {
+		return patientPhone;
+	}
 
-    public String getPatientName() {
-        return patientName;
-    }
+	public String getPatientAddress() {
+		return patientAddress;
+	}
 
-    public String getPatientEmail() {
-        return patientEmail;
-    }
+	public LocalDateTime getAppointmentTime() {
+		return appointmentTime;
+	}
 
-    public String getPatientPhone() {
-        return patientPhone;
-    }
+	public int getStatus() {
+		return status;
+	}
 
-    public String getPatientAddress() {
-        return patientAddress;
-    }
+	public LocalDate getAppointmentDate() {
+		return appointmentDate;
+	}
 
-    public LocalDateTime getAppointmentTime() {
-        return appointmentTime;
-    }
+	public LocalTime getAppointmentTimeOnly() {
+		return appointmentTimeOnly;
+	}
 
-    public int getStatus() {
-        return status;
-    }
-
-    public LocalDate getAppointmentDate() {
-        return appointmentDate;
-    }
-
-    public LocalTime getAppointmentTimeOnly() {
-        return appointmentTimeOnly;
-    }
-
-    public LocalDateTime getEndTime() {
-        return endTime;
-    }
-
+	public LocalDateTime getEndTime() {
+		return endTime;
+	}
 }

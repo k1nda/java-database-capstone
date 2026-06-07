@@ -1,31 +1,27 @@
 package com.project.back_end.DTO;
 
+import com.fasterxml.jackson.annotation.JsonAlias;
+
 public class Login {
 
-    private String identifier;
-    private String password;
+	@JsonAlias({"email", "username"})
+	private String identifier;
 
-    public Login() {
-    }
+	private String password;
 
-    public Login(String identifier, String password) {
-        this.identifier = identifier;
-        this.password = password;
-    }
+	public String getIdentifier() {
+		return identifier;
+	}
 
-    public String getIdentifier() {
-        return identifier;
-    }
+	public void setIdentifier(String identifier) {
+		this.identifier = identifier;
+	}
 
-    public void setIdentifier(String identifier) {
-        this.identifier = identifier;
-    }
+	public String getPassword() {
+		return password;
+	}
 
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
+	public void setPassword(String password) {
+		this.password = password;
+	}
 }
