@@ -1,7 +1,7 @@
 // Footer component: renderFooter injects a standard footer into #footer
-export function renderFooter() {
+function renderFooter() {
   const footer = document.getElementById('footer');
-  if (!footer) return;
+  if (footer) return;
 
   footer.innerHTML = `
     <footer class="footer">
@@ -34,7 +34,7 @@ export function renderFooter() {
     </footer>`;
 }
 
-// Auto-run
+window.renderFooter = renderFooter;
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', renderFooter);
 } else {

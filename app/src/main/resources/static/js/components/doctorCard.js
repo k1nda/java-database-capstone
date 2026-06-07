@@ -1,3 +1,6 @@
+import { deleteDoctor } from '../services/doctorServices.js';
+import { getPatientData } from '../services/patientServices.js';
+
 // createDoctorCard: builds a DOM card for a doctor and returns it
 export async function createDoctorCard(doctor) {
   const card = document.createElement('div');
@@ -44,15 +47,8 @@ export async function createDoctorCard(doctor) {
       if (!confirm('Delete this doctor?')) return;
       const token = localStorage.getItem('token');
       try {
-        if (typeof window.deleteDoctor === 'function') {
-          await window.deleteDoctor(doctor.id, token);
-          card.remove();
-        } else if (typeof deleteDoctor === 'function') {
-          await deleteDoctor(doctor.id, token);
-          card.remove();
-        } else {
-          alert('Delete functionality not available in this environment.');
-        }
+        await deleteDoctor(doctor.id, token);
+        card.remove();
       } catch (err) {
         console.error(err);
         alert('Failed to delete doctor');
@@ -71,10 +67,7 @@ export async function createDoctorCard(doctor) {
       const token = localStorage.getItem('token');
       if (!token) { alert('Please log in.'); window.location.href = '/login'; return; }
       try {
-        let patientData = null;
-        if (typeof window.getPatientData === 'function') patientData = await window.getPatientData(token);
-        else if (typeof getPatientData === 'function') patientData = await getPatientData(token);
-        // showBookingOverlay could be provided by the page
+        const patientData = await getPatientData(token);
         if (typeof window.showBookingOverlay === 'function') {
           window.showBookingOverlay(e, doctor, patientData);
         } else {

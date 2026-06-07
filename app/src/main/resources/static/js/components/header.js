@@ -1,9 +1,8 @@
-// Header component: renders a role-aware header into the page
-export function renderHeader() {
+// Header component: renders a role-aware header into the #header container
+function renderHeader() {
   const headerDiv = document.getElementById('header');
-  if (!headerDiv) return;
+  if (headerDiv) return;
 
-  // If on root path, clear session and render minimal header
   if (window.location.pathname.endsWith('/')) {
     localStorage.removeItem('userRole');
     localStorage.removeItem('token');
@@ -20,8 +19,7 @@ export function renderHeader() {
   const role = localStorage.getItem('userRole');
   const token = localStorage.getItem('token');
 
-  // If role indicates a logged-in type but token missing, force logout
-  if ((role === 'loggedPatient' || role === 'admin' || role === 'doctor') && !token) {
+  if ((role === 'loggedPatient' || role === 'admin' || role === 'doctor') && token) {
     localStorage.removeItem('userRole');
     alert('Session expired or invalid login. Please log in again.');
     window.location.href = '/';
@@ -50,7 +48,6 @@ export function renderHeader() {
       <a href="/pages/patientAppointments.html" id="appointmentsLink">Appointments</a>
       <a href="#" id="logoutLink">Logout</a>`;
   } else {
-    // guest / patient
     headerContent += `
       <a href="/login" id="loginLink">Login</a>
       <a href="/signup" id="signupLink">Sign Up</a>`;
@@ -78,19 +75,22 @@ function attachHeaderButtonListeners() {
   if (appointmentsLink) appointmentsLink.addEventListener('click', (e) => { e.preventDefault(); window.location.href = '/pages/patientAppointments.html'; });
 }
 
-export function logout() {
+function logout() {
   localStorage.removeItem('token');
   localStorage.removeItem('userRole');
   window.location.href = '/';
 }
 
-export function logoutPatient() {
+function logoutPatient() {
   localStorage.removeItem('token');
   localStorage.setItem('userRole', 'patient');
   window.location.href = '/';
 }
 
-// Auto-run render on load for convenience
+window.logout = logout;
+window.logoutPatient = logoutPatient;
+window.renderHeader = renderHeader;
+
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', renderHeader);
 } else {
