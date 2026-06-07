@@ -5,7 +5,7 @@ import jakarta.validation.constraints.*;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 @Entity
-@Table(name = "patients")
+@Table(name = "patient")
 public class Patient {
 
     @Id
@@ -29,7 +29,7 @@ public class Patient {
     private String password;
 
     @NotNull(message = "phone cannot be null")
-    @Pattern(regexp = "\\d{10}", message = "phone number must be 10 digits")
+    @Pattern(regexp = "^(?:\\d{10}|\\d{3}-\\d{3}-\\d{4})$", message = "phone number must be 10 digits or in XXX-XXX-XXXX format")
     @Column(nullable = false)
     private String phone;
 

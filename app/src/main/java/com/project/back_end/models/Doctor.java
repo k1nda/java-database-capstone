@@ -6,7 +6,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.List;
 
 @Entity
-@Table(name = "doctors")
+@Table(name = "doctor")
 public class Doctor {
 
     @Id
@@ -35,13 +35,13 @@ public class Doctor {
     private String password;
 
     @NotNull(message = "phone cannot be null")
-    @Pattern(regexp = "\\d{10}", message = "phone number must be 10 digits")
+    @Pattern(regexp = "^(?:\\d{10}|\\d{3}-\\d{3}-\\d{4})$", message = "phone number must be 10 digits or in XXX-XXX-XXXX format")
     @Column(nullable = false)
     private String phone;
 
     @ElementCollection
     @CollectionTable(name = "doctor_available_times", joinColumns = @JoinColumn(name = "doctor_id"))
-    @Column(name = "available_time")
+    @Column(name = "available_times")
     private List<String> availableTimes;
 
     // Constructors
