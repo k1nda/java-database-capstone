@@ -6,8 +6,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
-import java.util.Map;
-
 @Controller
 public class DashboardController {
 
@@ -20,8 +18,8 @@ public class DashboardController {
 
     @GetMapping("/adminDashboard/{token}")
     public String adminDashboard(@PathVariable("token") String token) {
-        Map<String, String> result = tokenService.validateToken(token, "admin");
-        if (result == null || result.isEmpty()) {
+        boolean valid = tokenService.validateToken(token, "admin");
+        if (valid) {
             return "admin/adminDashboard";
         }
         return "redirect:/";
@@ -29,11 +27,10 @@ public class DashboardController {
 
     @GetMapping("/doctorDashboard/{token}")
     public String doctorDashboard(@PathVariable("token") String token) {
-        Map<String, String> result = tokenService.validateToken(token, "doctor");
-        if (result == null || result.isEmpty()) {
+        boolean valid = tokenService.validateToken(token, "doctor");
+        if (valid) {
             return "doctor/doctorDashboard";
         }
         return "redirect:/";
     }
-
 }

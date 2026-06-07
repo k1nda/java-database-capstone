@@ -10,15 +10,28 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface DoctorRepository extends JpaRepository<Doctor, Long> {
 
-   Doctor findByEmail(String email);
+    Doctor findByEmail(String email);
 
-   @Query("SELECT d FROM Doctor d WHERE LOWER(d.name) LIKE LOWER(CONCAT('%', :name, '%'))")
-   List<Doctor> findByNameLike(@Param("name") String name);
+    @Query("SELECT DISTINCT d FROM Doctor d LEFT JOIN FETCH d.availableTimes")
+    List<Doctor> findAllWithAvailableTimes();
 
-   @Query("SELECT d FROM Doctor d WHERE LOWER(d.name) LIKE LOWER(CONCAT('%', :name, '%')) AND LOWER(d.specialty) = LOWER(:specialty)")
-   List<Doctor> findByNameContainingIgnoreCaseAndSpecialtyIgnoreCase(
-         @Param("name") String name,
-         @Param("specialty") String specialty);
+    @Query("SELECT DISTINCT d FROM Doctor d LEFT JOIN FETCH d.availableTimes WHERE LOWER(d.name) LIKE LOWER(CONCAT('%', :name, '%'))")
+    List<Doctor> findByNameLike(@Param("name") String name);
 
-   List<Doctor> findBySpecialtyIgnoreCase(String specialty);
+    @Query("""
+            SELECT DISTINCT d FROM Doctor d
+            LEFT JOIN FETCH d.availableTimes
+            WHERE LOWER(d.name) LIKE LOWER(CONCAT('%', :name, '%'))
+              AND LOWER(d.specialty) = LOWER(:specialty)
+            """)
+    List<Doctor> findByNameContainingIgnoreCaseAndSpecialtyIgnoreCase(
+            @Param("name") String name,
+            @Param("specialty") String specialty);
+
+    @Query("""
+            SELECT DISTINCT d FROM Doctor d
+            LEFT JOIN FETCH d.availableTimes
+            WHERE LOWER(d.specialty) = LOWER(:specialty)
+            """)
+    List<Doctor> findBySpecialtyIgnoreCase(@Param("specialty") String specialty);
 }

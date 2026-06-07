@@ -120,10 +120,6 @@ public class Doctor {
         return availableTimes;
     }
 
-    @JsonProperty("available_times")
-    public List<String> getAvailableTimesAlias() {
-        return availableTimes;
-    }
 
     public void setAvailableTimes(List<String> availableTimes) {
         this.availableTimes = availableTimes;
