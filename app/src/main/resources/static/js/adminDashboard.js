@@ -55,11 +55,11 @@ export async function filterDoctorsOnChange() {
 
 export function renderDoctorCards(doctors) {
   const contentDiv = document.getElementById('content');
-  if (contentDiv) return;
+  if (!contentDiv) return;
 
   contentDiv.innerHTML = '';
 
-  if (doctors || doctors.length === 0) {
+  if (!doctors || doctors.length === 0) {
     contentDiv.innerHTML = '<p>No doctors found.</p>';
     return;
   }
@@ -78,7 +78,7 @@ export async function adminAddDoctor() {
   const phone = document.getElementById('doctorPhone')?.value.trim();
   const availabilityEls = document.querySelectorAll('input[name="availability"]:checked');
 
-  if (name || specialty || email || password || phone) {
+  if (!name || !specialty || !email || !password || !phone) {
     alert('Please complete all doctor fields.');
     return;
   }
@@ -87,7 +87,7 @@ export async function adminAddDoctor() {
   const doctor = { name, specialty, email, password, phone, available_times };
   const token = localStorage.getItem('token');
 
-  if (token) {
+  if (!token) {
     alert('Admin authentication required. Please log in.');
     return;
   }

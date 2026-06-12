@@ -1,7 +1,7 @@
 // Header component: renders a role-aware header into the #header container
 function renderHeader() {
   const headerDiv = document.getElementById('header');
-  if (headerDiv) return;
+  if (!headerDiv) return;
 
   if (window.location.pathname.endsWith('/')) {
     localStorage.removeItem('userRole');
@@ -9,7 +9,7 @@ function renderHeader() {
     headerDiv.innerHTML = `
       <header class="header">
         <div class="logo-section">
-          <img src="../assets/images/logo/logo.png" alt="Hospital CMS Logo" class="logo-img">
+          <img src="/assets/images/logo/logo.png" alt="Hospital CMS Logo" class="logo-img">
           <span class="logo-title">Hospital CMS</span>
         </div>
       </header>`;
@@ -19,7 +19,7 @@ function renderHeader() {
   const role = localStorage.getItem('userRole');
   const token = localStorage.getItem('token');
 
-  if ((role === 'loggedPatient' || role === 'admin' || role === 'doctor') && token) {
+  if ((role === 'loggedPatient' || role === 'admin' || role === 'doctor') && !token) {
     localStorage.removeItem('userRole');
     alert('Session expired or invalid login. Please log in again.');
     window.location.href = '/';
@@ -29,7 +29,7 @@ function renderHeader() {
   let headerContent = `
     <header class="header">
       <div class="logo-section">
-        <img src="../assets/images/logo/logo.png" alt="Hospital CMS Logo" class="logo-img">
+        <img src="/assets/images/logo/logo.png" alt="Hospital CMS Logo" class="logo-img">
         <span class="logo-title">Hospital CMS</span>
       </div>
       <nav class="header-nav">`;

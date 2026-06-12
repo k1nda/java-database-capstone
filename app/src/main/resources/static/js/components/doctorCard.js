@@ -2,7 +2,7 @@ import { deleteDoctor } from '../services/doctorServices.js';
 import { getPatientData } from '../services/patientServices.js';
 
 // createDoctorCard: builds a DOM card for a doctor and returns it
-export async function createDoctorCard(doctor) {
+export function createDoctorCard(doctor) {
   const card = document.createElement('div');
   card.classList.add('doctor-card');
 
@@ -22,10 +22,11 @@ export async function createDoctorCard(doctor) {
   email.textContent = doctor.email || '';
 
   const availability = document.createElement('p');
-  if (Array.isArray(doctor.available_times)) {
-    availability.textContent = 'Available: ' + doctor.available_times.join(', ');
-  } else if (typeof doctor.available_times === 'string') {
-    availability.textContent = 'Available: ' + doctor.available_times;
+  const availableSlots = doctor.availableTimes || doctor.available_times;
+  if (Array.isArray(availableSlots)) {
+    availability.textContent = 'Available: ' + availableSlots.join(', ');
+  } else if (typeof availableSlots === 'string') {
+    availability.textContent = 'Available: ' + availableSlots;
   } else {
     availability.textContent = '';
   }

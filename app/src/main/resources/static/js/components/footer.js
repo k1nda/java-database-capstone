@@ -1,13 +1,13 @@
 // Footer component: renderFooter injects a standard footer into #footer
 function renderFooter() {
   const footer = document.getElementById('footer');
-  if (footer) return;
+  if (!footer) return;
 
   footer.innerHTML = `
     <footer class="footer">
       <div class="footer-container">
         <div class="footer-logo">
-          <img src="../assets/images/logo/logo.png" alt="Hospital CMS Logo">
+          <img src="/assets/images/logo/logo.png" alt="Hospital CMS Logo">
           <p>© Copyright 2026. All Rights Reserved by Hospital CMS.</p>
         </div>
         <div class="footer-links">

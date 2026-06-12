@@ -1,3 +1,54 @@
+/* Doctor dashboard specific styles */
+
+.doctor-filters {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+#datePicker {
+  min-width: 180px;
+}
+
+.patient-table {
+  width: min(1100px, 96%);
+  margin: 0 auto;
+  border-collapse: collapse;
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+.patient-table thead {
+  background-color: #015c5d;
+  color: #fff;
+}
+
+.patient-table th,
+.patient-table td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #ececec;
+}
+
+.patient-table tr:hover td {
+  background-color: #f7fbfb;
+}
+
+@media (max-width: 768px) {
+  .patient-table {
+    font-size: 14px;
+  }
+
+  .patient-table th,
+  .patient-table td {
+    padding: 8px;
+  }
+}
 /* This is the style sheet for the doctorDashboard.html */
 /* 
 **Table Header (`.table-header`)**

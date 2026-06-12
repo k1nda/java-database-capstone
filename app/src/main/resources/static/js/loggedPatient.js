@@ -40,6 +40,9 @@ export function showBookingOverlay(e, doctor, patient) {
 
   const modalApp = document.createElement("div");
   modalApp.classList.add("modalApp");
+  const availableTimes = Array.isArray(doctor.availableTimes)
+    ? doctor.availableTimes
+    : (Array.isArray(doctor.available_times) ? doctor.available_times : []);
 
   modalApp.innerHTML = `
     <h2>Book Appointment</h2>
@@ -50,7 +53,7 @@ export function showBookingOverlay(e, doctor, patient) {
     <input class="input-field" type="date" id="appointment-date" />
     <select class="input-field" id="appointment-time">
       <option value="">Select time</option>
-      ${doctor.availableTimes.map(t => `<option value="${t}">${t}</option>`).join('')}
+      ${availableTimes.map(t => `<option value="${t}">${t}</option>`).join('')}
     </select>
     <button class="confirm-booking">Confirm Booking</button>
   `;
@@ -105,7 +108,7 @@ function filterDoctorsOnChange() {
 
   filterDoctors(name, time, specialty)
     .then(response => {
-      const doctors = response.doctors;
+      const doctors = Array.isArray(response) ? response : (response?.doctors || []);
       const contentDiv = document.getElementById("content");
       contentDiv.innerHTML = "";
 

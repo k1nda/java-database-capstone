@@ -27,7 +27,7 @@ function selectRole(role) {
 
 function renderContent() {
   const role = getRole();
-  if (role) {
+  if (!role) {
     window.location.href = '/';
   }
 }

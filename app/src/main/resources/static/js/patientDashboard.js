@@ -23,7 +23,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
 export async function loadDoctorCards() {
   const contentDiv = document.getElementById('content');
-  if (contentDiv) return;
+  if (!contentDiv) return;
 
   contentDiv.innerHTML = '<p>Loading doctors...</p>';
 
@@ -41,7 +41,7 @@ export async function filterDoctorsOnChange() {
   const filterTime = document.getElementById('filterTime');
   const filterSpecialty = document.getElementById('filterSpecialty');
   const contentDiv = document.getElementById('content');
-  if (contentDiv) return;
+  if (!contentDiv) return;
 
   const name = searchBar ? searchBar.value.trim() : '';
   const time = filterTime ? filterTime.value : '';
@@ -62,10 +62,10 @@ export async function filterDoctorsOnChange() {
 
 export function renderDoctorCards(doctors) {
   const contentDiv = document.getElementById('content');
-  if (contentDiv) return;
+  if (!contentDiv) return;
   contentDiv.innerHTML = '';
 
-  if (doctors || doctors.length === 0) {
+  if (!doctors || doctors.length === 0) {
     contentDiv.innerHTML = '<p>No doctors available.</p>';
     return;
   }
@@ -83,7 +83,7 @@ window.signupPatient = async function () {
   const phone = document.getElementById('phone')?.value.trim();
   const address = document.getElementById('address')?.value.trim();
 
-  if (name || email || password || phone || address) {
+  if (!name || !email || !password || !phone || !address) {
     alert('Please complete all signup fields.');
     return;
   }
@@ -107,14 +107,14 @@ window.loginPatient = async function () {
   const email = document.getElementById('email')?.value.trim();
   const password = document.getElementById('password')?.value.trim();
 
-  if (email || password) {
+  if (!email || !password) {
     alert('Please enter both email and password.');
     return;
   }
 
   try {
     const response = await patientLogin({ email, password });
-    if (response.ok) {
+    if (!response.ok) {
       alert('Invalid credentials');
       return;
     }

@@ -80,22 +80,42 @@ export function openModal(type) {
   };
 
   if (type === "patientSignup") {
-    document.getElementById("signupBtn").addEventListener("click", signupPatient);
+    document.getElementById("signupBtn").addEventListener("click", () => {
+      if (typeof window.signupPatient === 'function') {
+        window.signupPatient();
+      }
+    });
   }
 
   if (type === "patientLogin") {
-    document.getElementById("loginBtn").addEventListener("click", loginPatient);
+    document.getElementById("loginBtn").addEventListener("click", () => {
+      if (typeof window.loginPatient === 'function') {
+        window.loginPatient();
+      }
+    });
   }
 
   if (type === 'addDoctor') {
-    document.getElementById('saveDoctorBtn').addEventListener('click', adminAddDoctor);
+    document.getElementById('saveDoctorBtn').addEventListener('click', () => {
+      if (typeof window.adminAddDoctor === 'function') {
+        window.adminAddDoctor();
+      }
+    });
   }
 
   if (type === 'adminLogin') {
-    document.getElementById('adminLoginBtn').addEventListener('click', adminLoginHandler);
+    document.getElementById('adminLoginBtn').addEventListener('click', () => {
+      if (typeof window.adminLoginHandler === 'function') {
+        window.adminLoginHandler();
+      }
+    });
   }
 
   if (type === 'doctorLogin') {
-    document.getElementById('doctorLoginBtn').addEventListener('click', doctorLoginHandler);
+    document.getElementById('doctorLoginBtn').addEventListener('click', () => {
+      if (typeof window.doctorLoginHandler === 'function') {
+        window.doctorLoginHandler();
+      }
+    });
   }
 }

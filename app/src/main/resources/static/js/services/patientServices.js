@@ -9,7 +9,7 @@ export async function patientSignup(data) {
       body: JSON.stringify(data),
     });
     const result = await response.json();
-    if (response.ok) {
+    if (!response.ok) {
       return { success: false, message: result.message || 'Signup failed' };
     }
     return { success: true, message: result.message || 'Patient created successfully' };

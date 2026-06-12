@@ -4,7 +4,7 @@ const DOCTOR_API = `${API_BASE_URL}/doctor`;
 export async function getDoctors() {
   try {
     const response = await fetch(DOCTOR_API);
-    if (response.ok) {
+    if (!response.ok) {
       console.error('getDoctors failed', response.statusText);
       return [];
     }
@@ -57,7 +57,7 @@ export async function filterDoctors(name, time, specialty) {
 
   try {
     const response = await fetch(`${DOCTOR_API}/filter/${safeName}/${safeTime}/${safeSpecialty}`);
-    if (response.ok) {
+    if (!response.ok) {
       console.error('filterDoctors failed', response.statusText);
       return [];
     }
